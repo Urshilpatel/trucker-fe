@@ -1,0 +1,1 @@
+export { default as AddOrdersPageView } from './add-orders-view';

@@ -1,5 +1,6 @@
 import { faker } from '@faker-js/faker';
 
+import { Button } from '@mui/material';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Unstable_Grid2';
 import Typography from '@mui/material/Typography';
@@ -13,8 +14,8 @@ import AppCurrentVisits from '../app-current-visits';
 import AppWebsiteVisits from '../app-website-visits';
 import AppWidgetSummary from '../app-widget-summary';
 import AppTrafficBySite from '../app-traffic-by-site';
-import AppCurrentSubject from '../app-current-subject';
-import AppConversionRates from '../app-conversion-rates';
+// import AppCurrentSubject from '../app-current-subject';
+// import AppConversionRates from '../app-conversion-rates';
 
 // ----------------------------------------------------------------------
 
@@ -27,39 +28,47 @@ export default function AppView() {
 
       <Grid container spacing={3}>
         <Grid xs={12} sm={6} md={3}>
-          <AppWidgetSummary
-            title="Weekly Sales"
-            total={714000}
-            color="success"
-            icon={<img alt="icon" src="/assets/icons/glass/ic_glass_bag.png" />}
-          />
+          <Button onClick={() => console.log('Weekly Sales button clicked')}>
+            <AppWidgetSummary
+              title="Total Shipping"
+              total={714000}
+              color="success"
+              icon={<img alt="icon" src="/assets/icons/glass/ic_glass_bag.png" />}
+            />
+          </Button>
         </Grid>
 
         <Grid xs={12} sm={6} md={3}>
-          <AppWidgetSummary
-            title="New Users"
-            total={1352831}
-            color="info"
-            icon={<img alt="icon" src="/assets/icons/glass/ic_glass_users.png" />}
-          />
+          <Button onClick={() => console.log('New Users button clicked')}>
+            <AppWidgetSummary
+              title="New Orders"
+              total={1352831}
+              color="info"
+              icon={<img alt="icon" src="/assets/icons/glass/ic_glass_users.png" />}
+            />
+          </Button>
         </Grid>
 
         <Grid xs={12} sm={6} md={3}>
-          <AppWidgetSummary
-            title="Item Orders"
-            total={1723315}
-            color="warning"
-            icon={<img alt="icon" src="/assets/icons/glass/ic_glass_buy.png" />}
-          />
+          <Button onClick={() => console.log('Item Orders button clicked')}>
+            <AppWidgetSummary
+              title="Add Orders"
+              total={1723315}
+              color="warning"
+              icon={<img alt="icon" src="/assets/icons/glass/ic_glass_buy.png" />}
+            />
+          </Button>
         </Grid>
 
         <Grid xs={12} sm={6} md={3}>
-          <AppWidgetSummary
-            title="Bug Reports"
-            total={234}
-            color="error"
-            icon={<img alt="icon" src="/assets/icons/glass/ic_glass_message.png" />}
-          />
+          <Button onClick={() => console.log('Bug Reports button clicked')}>
+            <AppWidgetSummary
+              title="Issueso"
+              total={234}
+              color="error"
+              icon={<img alt="icon" src="/assets/icons/glass/ic_glass_message.png" />}
+            />
+          </Button>
         </Grid>
 
         <Grid xs={12} md={6} lg={8}>
@@ -118,7 +127,7 @@ export default function AppView() {
           />
         </Grid>
 
-        <Grid xs={12} md={6} lg={8}>
+        {/* <Grid xs={12} md={6} lg={8}>
           <AppConversionRates
             title="Conversion Rates"
             subheader="(+43%) than last year"
@@ -137,9 +146,9 @@ export default function AppView() {
               ],
             }}
           />
-        </Grid>
+        </Grid> */}
 
-        <Grid xs={12} md={6} lg={4}>
+        {/* <Grid xs={12} md={6} lg={4}>
           <AppCurrentSubject
             title="Current Subject"
             chart={{
@@ -151,7 +160,7 @@ export default function AppView() {
               ],
             }}
           />
-        </Grid>
+        </Grid> */}
 
         <Grid xs={12} md={6} lg={8}>
           <AppNewsUpdate
