@@ -18,8 +18,8 @@ const navConfig = [
     icon: icon('ic_user'),
   },
   {
-    title: 'product',
-    path: '/products',
+    title: 'bol',
+    path: '/bol',
     icon: icon('ic_cart'),
   },
   {
@@ -31,6 +31,11 @@ const navConfig = [
     title: 'Not found',
     path: '/404',
     icon: icon('ic_disabled'),
+  },
+  {
+    tital: 'New Orders',
+    path: '/neworders',
+    icon: icon('ic_glass_users'),
   },
 ];
 

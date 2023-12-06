@@ -1,4 +1,4 @@
-// NewOrdersPage.js
+// BolPage.js
 import React, { useState } from 'react';
 
 import Select from '@mui/material/Select';
@@ -10,47 +10,58 @@ import Typography from '@mui/material/Typography';
 import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
 
-export default function NewOrdersPageView() {
+export default function BolPageView() {
+  const [clientId, setClientId] = useState('');
   const [bolNumber, setBolNumber] = useState('');
-  const [eqNumber, setEqNumber] = useState('');
-  const [deliveryDateTime, setDeliveryDateTime] = useState('');
   const [pickupLocation, setPickupLocation] = useState('');
-  const [dropLocation, setDropLocation] = useState('');
+  const [eta, setEta] = useState('');
+
+  const clientList = [
+    { id: 1, name: 'Client 1' },
+    { id: 2, name: 'Client 2' },
+    { id: 3, name: 'Client 3' },
+    { id: 4, name: 'Client 4' },
+  ];
+
+  const pickupLocations = ['Montreal', 'Toronto'];
 
   const handleAddButtonClick = () => {
-    // Handle logic for adding the order (e.g., sending data to the server)
+    // Handle logic for adding the BOL (e.g., sending data to server)
     console.log('Add button clicked');
   };
 
   return (
     <Container maxWidth="xl">
       <Typography variant="h4" sx={{ mb: 5 }}>
-        New Orders
+        BOL Page
       </Typography>
 
       <form>
+        <FormControl fullWidth margin="normal">
+          <InputLabel id="client-label">Client</InputLabel>
+          <Select
+            labelId="client-label"
+            id="client-select"
+            value={clientId}
+            onChange={(e) => setClientId(e.target.value)}
+          >
+            {clientList.map((client) => (
+              <MenuItem key={client.id} value={client.id}>
+                {client.name}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+
         <TextField
           label="BOL Number"
           fullWidth
           value={bolNumber}
           onChange={(e) => setBolNumber(e.target.value)}
           margin="normal"
+          disabled // Assuming BOL is auto-generated and should not be edited
         />
-        <TextField
-          label="EQ Number"
-          fullWidth
-          value={eqNumber}
-          onChange={(e) => setEqNumber(e.target.value)}
-          margin="normal"
-        />
-        <TextField
-          label=""
-          type="datetime-local"
-          fullWidth
-          value={deliveryDateTime}
-          onChange={(e) => setDeliveryDateTime(e.target.value)}
-          margin="normal"
-        />
+
         <FormControl fullWidth margin="normal">
           <InputLabel id="pickup-location-label">Pickup Location</InputLabel>
           <Select
@@ -59,15 +70,20 @@ export default function NewOrdersPageView() {
             value={pickupLocation}
             onChange={(e) => setPickupLocation(e.target.value)}
           >
-            <MenuItem value="Montreal">Montreal</MenuItem>
-            <MenuItem value="Toronto">Toronto</MenuItem>
+            {pickupLocations.map((location) => (
+              <MenuItem key={location} value={location}>
+                {location}
+              </MenuItem>
+            ))}
           </Select>
         </FormControl>
+
         <TextField
-          label="Drop Location"
+          label="ETA (hours)"
+          type="number"
           fullWidth
-          value={dropLocation}
-          onChange={(e) => setDropLocation(e.target.value)}
+          value={eta}
+          onChange={(e) => setEta(e.target.value)}
           margin="normal"
         />
 

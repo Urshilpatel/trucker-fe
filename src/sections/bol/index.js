@@ -1,0 +1,1 @@
+export { default as BolPageView } from './bol-view';
