@@ -1,9 +1,14 @@
+import React from 'react';
 import { faker } from '@faker-js/faker';
+import { Route, useNavigate } from 'react-router-dom';
 
-import { Button } from '@mui/material';
+import { Button, Switch } from '@mui/material';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Unstable_Grid2';
 import Typography from '@mui/material/Typography';
+
+import AddOrdersPage from 'src/pages/addorders';
+import NewOrdersPage from 'src/pages/neworders';
 
 import Iconify from 'src/components/iconify';
 
@@ -20,6 +25,17 @@ import AppTrafficBySite from '../app-traffic-by-site';
 // ----------------------------------------------------------------------
 
 export default function AppView() {
+    const navigate = useNavigate();
+  
+    const handleAddOrdersClick = () => {
+      // Navigate to Add Orders Page
+      navigate('addorders');
+    };
+  
+    const handleNewOrdersClick = () => {
+      // Navigate to New Orders Page
+      navigate('neworders');
+    };
   return (
     <Container maxWidth="xl">
       <Typography variant="h4" sx={{ mb: 5 }}>
@@ -39,7 +55,7 @@ export default function AppView() {
         </Grid>
 
         <Grid xs={12} sm={6} md={3}>
-          <Button onClick={() => console.log('New Users button clicked')}>
+          <Button onClick={handleNewOrdersClick}>
             <AppWidgetSummary
               title="New Orders"
               total={1352831}
@@ -50,7 +66,7 @@ export default function AppView() {
         </Grid>
 
         <Grid xs={12} sm={6} md={3}>
-          <Button onClick={() => console.log('Item Orders button clicked')}>
+          <Button onClick={handleAddOrdersClick}>
             <AppWidgetSummary
               title="Add Orders"
               total={1723315}
@@ -63,7 +79,7 @@ export default function AppView() {
         <Grid xs={12} sm={6} md={3}>
           <Button onClick={() => console.log('Bug Reports button clicked')}>
             <AppWidgetSummary
-              title="Issueso"
+              title="Issues"
               total={234}
               color="error"
               icon={<img alt="icon" src="/assets/icons/glass/ic_glass_message.png" />}
@@ -234,6 +250,10 @@ export default function AppView() {
           />
         </Grid>
       </Grid>
+      <Switch>
+      <Route path="addorders" component={AddOrdersPage} />
+        <Route path="neworders" component={NewOrdersPage} />
+      </Switch>
     </Container>
   );
 }

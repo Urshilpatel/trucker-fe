@@ -1,5 +1,5 @@
 // BolPage.js
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import Select from '@mui/material/Select';
 import Button from '@mui/material/Button';
@@ -25,11 +25,27 @@ export default function BolPageView() {
 
   const pickupLocations = ['Montreal', 'Toronto'];
 
-  const handleAddButtonClick = () => {
-    // Handle logic for adding the BOL (e.g., sending data to server)
-    console.log('Add button clicked');
-  };
+  const generateRandomBolNumber = () => Math.floor(100000 + Math.random() * 900000).toString();
+  
 
+  // useEffect to generate the BOL number when the component mounts
+  useEffect(() => {
+    setBolNumber(generateRandomBolNumber());
+  }, []); // Empty dependency array ensures this effect runs only once on mount
+
+  const handleAddButtonClick = () => {
+    const newBolNumber = generateRandomBolNumber();
+    // Handle logic for adding the BOL (e.g., sending data to server)
+    console.log('Add button clicked', newBolNumber);
+  
+   // Reset form fields or update state as needed
+   setClientId('');
+   setPickupLocation('');
+   setEta('');
+
+   // Update the BOL number with the new value
+   setBolNumber(newBolNumber);
+  };
   return (
     <Container maxWidth="xl">
       <Typography variant="h4" sx={{ mb: 5 }}>
